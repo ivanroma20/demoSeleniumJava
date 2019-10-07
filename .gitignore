@@ -9,7 +9,6 @@ target/
 /.maven
 /.repository
 
-output/*
 test-output/*
 
 
