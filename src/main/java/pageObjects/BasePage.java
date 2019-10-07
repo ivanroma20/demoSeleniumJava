@@ -436,19 +436,14 @@ public class BasePage extends DriverFactory {
 	
 	/*******************************Util Methods************************************/
 	
-	public String getTextList(List<WebElement> lista1 , List<WebElement> lista2, int position) {
+	public String getTextList(WebElement resultados ) {
 		
 		String numberResults= " " ;
-		
-		Boolean isPresent=lista1.size() > 0;
-		
-		if(isPresent){
-			numberResults=lista1.get(position).getText();
-		} else{
 			
-			numberResults=lista2.get(position).getText();
-		}
-		
+		String[] parts= resultados.getText().split(" ");
+			
+	    numberResults=parts[0];
+	
 		return numberResults;
 	}
 	
@@ -495,12 +490,17 @@ public class BasePage extends DriverFactory {
 	}
 	
 	public String orderListDsc(List<WebElement> precios, int cantidad) {
+		
+		String lblPrecio;
+		String[] parts;
 
 		List<Double> array_precios = new ArrayList<>();
 		String preOrdDsc= " ";
 
 		for (int i = 0; i < cantidad; i++) {
-			array_precios.add(Double.parseDouble(precios.get(i).getText().substring(4)));
+			lblPrecio = precios.get(i).getText();
+			parts = lblPrecio.split(" ");
+			array_precios.add(Double.parseDouble(parts[1]));
 		}
 
 	
@@ -514,6 +514,29 @@ public class BasePage extends DriverFactory {
 		}
 		
 		return preOrdDsc;
+
+	}
+	
+	public boolean assertorder(List<WebElement> precios, int cantidad) {
+		
+		String lblPrecio;
+		String[] parts;
+
+		List<Double> array_precios = new ArrayList<>();
+	
+
+		for (int i = 0; i < cantidad; i++) {
+			lblPrecio = precios.get(i).getText();
+			parts = lblPrecio.split(" ");
+			array_precios.add(Double.parseDouble(parts[1]));
+		}
+		
+       for(int i=1; i<cantidad; i++){
+            if(array_precios.get(i) < array_precios.get(i-1)){
+              return false;
+            }
+        }
+        return true;
 
 	}
 		

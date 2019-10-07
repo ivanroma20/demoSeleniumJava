@@ -47,10 +47,11 @@ public class EbayFilter extends DriverFactory {
 
 	@Then("^The order the first (\\d+) results should be correct$")
 	public void the_order_the_first_results_should_be_correct(int arg1) throws Throwable {
+		Assert.assertEquals(true, filtersPage.assertOrderResults());  // si los precios están ordenados ascedentemente retorna true
 		System.out.println("I-Número de resultados: "+"\n"+filtersPage.printNumberResults());
 		System.out.println("II-5 primeros (Nombres & Precios) : " + filtersPage.showNamePrice());
-		System.out.println("III-5 primeros Nombres Ordenados ascendentemente : " + filtersPage.showNamesAsc());
-		System.out.println("IV-5 primeros Precios Ordenados descendentemente : " + filtersPage.showPricesDsc());
+		System.out.println("III-Nombres Ordenados ascendentemente : " + filtersPage.showNamesAsc());
+		System.out.println("IV-Precios Ordenados descendentemente : " + filtersPage.showPricesDsc());
 
 	}
 
