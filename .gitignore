@@ -13,6 +13,5 @@ output/*
 test-output/*
 
 
-*
-*/
+
 !.gitignore
