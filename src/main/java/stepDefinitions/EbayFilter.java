@@ -14,7 +14,6 @@ public class EbayFilter extends DriverFactory {
 	public void i_access_ebay_website() throws Throwable {
 		Reporter.addStepLog("Accessing ebay website");
 		homePage.getIndexEbay();
-		//Assert.assertEquals("Artículos electrónicos, autos, ropa, objetos de colección, cupones y más | eBay", "Artículos electrónicos, autos, ropa, objetos de colección, cupones y más | eBay");
 		
 	}
 
